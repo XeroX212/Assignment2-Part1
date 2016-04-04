@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var product = require('./routes/products');
 
 var app = express();
 
@@ -23,8 +23,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Make our db accessible to our router
+app.use(function(req, res, next){
+    req.db = db;
+    next();    
+});
+
 app.use('/', routes);
-app.use('/users', users);
+app.use('/product', product);
 
 // Connecting to the Database
 var db = mongoose.connection;
