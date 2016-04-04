@@ -6,8 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+// auth packages
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
+var LocalStrategy = require('passport-local').Strategy;
+
 var routes = require('./routes/index');
 var product = require('./routes/products');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -23,6 +30,37 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// enable flash for showing messages
+app.use(flash());
+
+// passport config section
+app.use(session({
+  secret: 'auth',
+  resave: true,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// use the Account model we built
+var Account = require('./models/account');
+passport.use(Account.createStrategy());
+passport.use(new LocalStrategy(Account.authenticate()));
+
+
+/* passport.use(new LocalStrategy(
+    function(username, password, done) {
+      Account.findOne({ username: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        if (!user.verifyPassword(password)) { return done(null, false); }
+        return done(null, user);
+      });
+    }
+)); */
+
+
 // Make our db accessible to our router
 app.use(function(req, res, next){
     req.db = db;
@@ -31,6 +69,7 @@ app.use(function(req, res, next){
 
 app.use('/', routes);
 app.use('/product', product);
+app.use('/auth', auth);
 
 // Connecting to the Database
 var db = mongoose.connection;

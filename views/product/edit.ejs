@@ -20,6 +20,9 @@
             <%= product.created %>
         </div>
         <button class="btn btn-primary col-sm-offset-2">Save</button>
+        
+        <a href="/product/delete/<%= product._id %>" title="Delete" class="confirm">
+            <button class="btn btn-danger" type="button">Delete</button>
     </form>
 </main>
 
