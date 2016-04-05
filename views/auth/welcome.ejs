@@ -1,9 +1,15 @@
 <%- include ../partials/header.ejs %>
-
-<main class="container">
-
-    <h1>Welcome, <%= user.username %></h1>
-
-</main>
+    
+        <div class="slider fullscreen">
+        <ul class="slides">
+            <li>
+                <img src="/images/wireframe.jpg">
+                <!-- Slider image -->
+                <div class="caption right-align">
+                    <h3>Welcome</h3>
+                    <h5 class="light grey-text text-lighten-3"><span style="background-color: black;"><%= user.username %></span></h5>
+                </div>
+            </li>
+            </div>
 
 <%- include ../partials/footer.ejs %>
