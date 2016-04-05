@@ -13,6 +13,7 @@ var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
+var select = require('./routes/select');
 var product = require('./routes/products');
 var auth = require('./routes/auth');
 
@@ -49,18 +50,6 @@ passport.use(Account.createStrategy());
 passport.use(new LocalStrategy(Account.authenticate()));
 
 
-/* passport.use(new LocalStrategy(
-    function(username, password, done) {
-      Account.findOne({ username: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
-        return done(null, user);
-      });
-    }
-)); */
-
-
 // Make our db accessible to our router
 app.use(function(req, res, next){
     req.db = db;
@@ -68,6 +57,7 @@ app.use(function(req, res, next){
 });
 
 app.use('/', routes);
+app.use('/select', select);
 app.use('/product', product);
 app.use('/auth', auth);
 

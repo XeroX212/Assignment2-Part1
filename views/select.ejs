@@ -1,23 +1,25 @@
-<%- include ../partials/header.ejs %>
+<%- include partials/header.ejs %>
 <div class="container">
 <h1>Product</h1>
     	<table class="striped">
-        <a href="/product/add" title="Add Product">Add a new Product</a>
     		<thead>
     			<tr>
     				<th>Type</th>
+                    <th>Color</th>
     			</tr>
     		</thead>
     		<tbody>    
     		<% for (var i=0; i < products.length; i++) { %>
     			<tr>
                     <td>
-    				<a href="/product/<%= products[i]._id%>" title="Read More">
-                    <%= products[i].Type %></a>
+                    <%= products[i].Type %>
+                    </td>
+                    <td>
+                    <%= products[i].color %>
     			    </td>
                 </tr>
     		<% } %>
     		</tbody>
     	</table>
         </div>
-<%- include ../partials/footer.ejs %>
+<%- include partials/footer.ejs %>

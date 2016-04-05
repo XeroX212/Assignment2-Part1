@@ -1,8 +1,26 @@
 <%- include partials/header.ejs %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 class="center">G.S Traders & Marbels</h1>
     
-    <a href="/auth/login" title="Login">Login</a>
-    Or
-    <a href="/auth/register" title="Register">Register</a>
+    <main class="container">
+    <p><%= title %></p>
+    <h3>ABOUT G.S Traders & Marbels</h3>
+<p>G.S Traders & Marbels has been a family owned and operated business for 20 years in Barrie, Ontario. G.S Traders & Marbels templates, fabricates and installs counter tops for kitchens and bathroom vanities., as well as the G.S Monuments Division which designs, fabricates and installs monuments for family memorials.
+</p>
+</main>
+    
+          <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Join the Business</span>
+              <p>After the user got loged in then they will be automatically agree to the G.S Traders and Marbels terms & Conditions</p>
+            </div>
+            <div class="card-action">
+             <a href="/auth/login" title="Login">Login</a>
+              <a href="/auth/register" title="Register">Register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
 <%- include partials/footer.ejs %>

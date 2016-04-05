@@ -47,7 +47,6 @@ router.get('/login', function(req, res, next) {
     successRedirect: '/auth/welcome',
     failureRedirect: '/auth/login',
     failureMessage: 'Invalid Login'
-    //failureFlash: true
 }));
 
 // GET register - show registration form
@@ -86,7 +85,7 @@ router.get('/logout', function(req, res, next) {
 // auth check
 function isLoggedIn(req, res, next) {
 
-    // is the user authenticated?
+    //user authenticated?
     if (req.isAuthenticated()) {
         return next();
     }

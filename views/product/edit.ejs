@@ -1,7 +1,7 @@
 <%- include ../partials/header.ejs %>
 
-<main class="container">
-    <h1>product Details</h1>
+<main class="row">
+<h1>Product Details</h1>
     <form method="post" action="<%= product._id %>">
         <fieldset class="form-group">
             <label for="name" class="col-sm-2">name: *</label>
@@ -13,8 +13,8 @@
         </fieldset>
         <fieldset class="form-group">
             <label for="color" class="col-sm-2">Color: *</label>
-            <textarea name="color" id="color" required><%= product.color %>
-            </textarea>
+            <input name="color" id="color" required><%= product.color %>
+            </input>
         </fieldset>
         <div>
             <%= product.created %>

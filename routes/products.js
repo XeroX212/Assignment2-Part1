@@ -90,9 +90,8 @@ router.post('/:id', isLoggedIn, function(req, res, next) {
     });
 });
 
-// GET handler for delete using the product id parameter
+//delete using the product id parameter
 router.get('/delete/:id', isLoggedIn, function(req, res, next) {
-   // grab the id parameter from the url
     var id = req.params.id;
 
     console.log('trying to delete');
